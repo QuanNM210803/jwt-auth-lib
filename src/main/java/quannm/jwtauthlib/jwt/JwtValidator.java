@@ -9,7 +9,6 @@ import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 
 import java.security.Key;
-import java.util.Date;
 import java.util.List;
 
 public class JwtValidator {
@@ -27,20 +26,19 @@ public class JwtValidator {
                     .parseClaimsJws(token)
                     .getBody();
 
-            String userId = claims.getSubject();
+            String username = claims.getSubject();
             List<String> roles = claims.get("roles", List.class);
-            String name = claims.get("username", String.class);
+            Integer userId = claims.get("userId", Integer.class);
             String email = claims.get("email", String.class);
             String fullName = claims.get("fullName", String.class);
-            Date exp = claims.getExpiration();
 
             return JwtUser.builder()
                     .userId(userId)
                     .roles(roles)
-                    .username(name)
+                    .username(username)
                     .email(email)
                     .fullName(fullName)
-                    .expiresAt(exp.toInstant())
+                    .payload(claims)
                     .build();
         }catch (JwtException e) {
             throw new InvalidTokenException("Invalid JWT token" + e.getMessage());
