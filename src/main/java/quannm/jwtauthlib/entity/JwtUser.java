@@ -1,4 +1,4 @@
-package com.jwtauthlib.entity;
+package quannm.jwtauthlib.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

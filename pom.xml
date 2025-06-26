@@ -8,7 +8,7 @@
         <version>3.3.13</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com</groupId>
+    <groupId>quannm</groupId>
     <artifactId>jwt-auth-lib</artifactId>
     <version>1.0.0</version>
     <name>JwtAuthLib</name>

@@ -1,4 +1,4 @@
-package com.jwtauthlib.exception;
+package quannm.jwtauthlib.exception;
 
 public class InvalidTokenException extends RuntimeException {
     public InvalidTokenException(String message) {

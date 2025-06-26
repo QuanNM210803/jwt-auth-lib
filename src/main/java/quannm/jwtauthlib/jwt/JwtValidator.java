@@ -1,27 +1,25 @@
-package com.jwtauthlib.jwt;
+package quannm.jwtauthlib.jwt;
 
-import com.jwtauthlib.entity.JwtUser;
-import com.jwtauthlib.exception.InvalidTokenException;
+import quannm.jwtauthlib.entity.JwtUser;
+import quannm.jwtauthlib.exception.InvalidTokenException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import org.springframework.stereotype.Component;
 
 import java.security.Key;
 import java.util.Date;
 import java.util.List;
 
-@Component
 public class JwtValidator {
 
-    private Key getSignInKey(String secretKey) {
+    private static Key getSignInKey(String secretKey) {
         byte[] bytes = Decoders.BASE64.decode(secretKey);
         return Keys.hmacShaKeyFor(bytes);
     }
 
-    public JwtUser validate(String token, String secretKey) {
+    public static JwtUser validate(String token, String secretKey) {
         try{
             Claims claims = Jwts.parserBuilder()
                     .setSigningKey(getSignInKey(secretKey))
